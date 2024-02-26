@@ -1,14 +1,15 @@
 import json
+from datetime import date
 
-
+hoje = date.today().weekday()
 
 with open('coffe.json', 'r') as coffe:
     data = json.load(coffe)
-    data["numero"] += 2
+    
+    if hoje < 5: 
+        data["numero"] += 2
+    else:
+        data["numero"] += 1
 
-# Grava o número de volta no arquivo
 with open('coffe.json', 'w') as coffe:
     json.dump(data, coffe)
-
-
-
